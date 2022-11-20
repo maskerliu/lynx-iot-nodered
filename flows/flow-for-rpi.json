@@ -7,6 +7,18 @@
         "info": ""
     },
     {
+        "id": "bcea2653db1caddd",
+        "type": "subflow",
+        "name": "LightController",
+        "info": "",
+        "category": "",
+        "in": [],
+        "out": [],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
         "id": "5302116ea6a6002c",
         "type": "mqtt-broker",
         "name": "paho",
@@ -37,6 +49,201 @@
         "sessionExpiry": ""
     },
     {
+        "id": "a204ab9d0c45b4a3",
+        "type": "rpi-gpio out",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pin": "6",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 340,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "cb29d649f88512a9",
+        "type": "inject",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "a204ab9d0c45b4a3",
+                "f3ad058bd1e48165"
+            ]
+        ]
+    },
+    {
+        "id": "f3ad058bd1e48165",
+        "type": "delay",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "875f74d74cb38193"
+            ]
+        ]
+    },
+    {
+        "id": "ca12c1e8773798df",
+        "type": "rpi-gpio out",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pin": "6",
+        "set": false,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 700,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "875f74d74cb38193",
+        "type": "function",
+        "z": "bcea2653db1caddd",
+        "name": "function 5",
+        "func": "msg.payload = 0\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 140,
+        "wires": [
+            [
+                "ca12c1e8773798df",
+                "7493c9a2e88e81e9"
+            ]
+        ]
+    },
+    {
+        "id": "f1c417779d6dc7ff",
+        "type": "rpi-gpio out",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pin": "13",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 880,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5ee46a328c7ec783",
+        "type": "delay",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 880,
+        "y": 300,
+        "wires": [
+            [
+                "f561b26e886e52c5"
+            ]
+        ]
+    },
+    {
+        "id": "f561b26e886e52c5",
+        "type": "function",
+        "z": "bcea2653db1caddd",
+        "name": "function 6",
+        "func": "msg.payload = 0\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1060,
+        "y": 300,
+        "wires": [
+            [
+                "d3d99923d7817969"
+            ]
+        ]
+    },
+    {
+        "id": "d3d99923d7817969",
+        "type": "rpi-gpio out",
+        "z": "bcea2653db1caddd",
+        "name": "",
+        "pin": "13",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 1220,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "7493c9a2e88e81e9",
+        "type": "function",
+        "z": "bcea2653db1caddd",
+        "name": "function 7",
+        "func": "msg.payload = 1\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 220,
+        "wires": [
+            [
+                "f1c417779d6dc7ff",
+                "5ee46a328c7ec783"
+            ]
+        ]
+    },
+    {
         "id": "0e0f0ad7bf2bc042",
         "type": "http request",
         "z": "f6f2187d.f17ca8",
@@ -52,8 +259,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 350,
-        "y": 180,
+        "x": 480,
+        "y": 320,
         "wires": [
             [
                 "f937eeabd4d14dc9"
@@ -73,8 +280,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 180,
+        "x": 920,
+        "y": 300,
         "wires": []
     },
     {
@@ -94,11 +301,12 @@
         "topic": "",
         "payload": "2",
         "payloadType": "num",
-        "x": 80,
-        "y": 160,
+        "x": 90,
+        "y": 240,
         "wires": [
             [
-                "dc6f71715005b049"
+                "dc6f71715005b049",
+                "214ff6f48b7266d7"
             ]
         ]
     },
@@ -129,8 +337,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 150,
-        "y": 300,
+        "x": 270,
+        "y": 420,
         "wires": [
             [
                 "0e0f0ad7bf2bc042"
@@ -146,7 +354,7 @@
         "type": "function",
         "z": "f6f2187d.f17ca8",
         "name": "function 1",
-        "func": "msg.payload = {\n    clientId: 'lynx-iot-nodered-00000000fbcc7715',\n    type: 0,\n    data:{\n        temperature: Number.parseFloat((Math.random() * 60).toFixed(2)),\n        humidity: Number.parseFloat(Math.random().toFixed(2)),\n        speed: Number.parseInt((Math.random() * 5000).toFixed(1)),\n        voltage: Number.parseInt((Math.random() * 220).toFixed(0)),\n        electric: Number.parseFloat((Math.random() * 5).toFixed(1)),\n        pressure: Number.parseFloat((Math.random() * 10).toFixed(1)),\n        timestamp: new Date().getTime()\n    }\n}\n\n// systeminformation.baseboard().then(result=>{\n//     console.log(result)\n// })\n\nreturn msg;",
+        "func": "msg.payload = {\n    clientId: flow.get('deviceId'),\n    type: 0,\n    data:{\n        temperature: Number.parseFloat((Math.random() * 60).toFixed(2)),\n        humidity: Number.parseFloat(Math.random().toFixed(2)),\n        speed: Number.parseInt((Math.random() * 5000).toFixed(1)),\n        voltage: Number.parseInt((Math.random() * 220).toFixed(0)),\n        electric: Number.parseFloat((Math.random() * 5).toFixed(1)),\n        pressure: Number.parseFloat((Math.random() * 10).toFixed(1)),\n        timestamp: new Date().getTime()\n    }\n}\n\n// systeminformation.baseboard().then(result=>{\n//     console.log(result)\n// })\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "// 部署节点后，此处添加的代码将运行一次。\n\nsysteminformation.baseboard().then((/** @type {any} */ result) => {\n    console.log(result)\n})",
@@ -157,11 +365,10 @@
                 "module": "systeminformation"
             }
         ],
-        "x": 340,
-        "y": 360,
+        "x": 480,
+        "y": 420,
         "wires": [
             [
-                "f937eeabd4d14dc9",
                 "70b6b88713af8499"
             ]
         ]
@@ -171,16 +378,16 @@
         "type": "mqtt in",
         "z": "f6f2187d.f17ca8",
         "name": "sub-self",
-        "topic": "lynx-iot-nodered-00000000fbcc7715",
+        "topic": "",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "5302116ea6a6002c",
         "nl": false,
         "rap": true,
         "rh": 0,
-        "inputs": 0,
-        "x": 90,
-        "y": 580,
+        "inputs": 1,
+        "x": 510,
+        "y": 40,
         "wires": [
             [
                 "41bf3791965f0146"
@@ -201,8 +408,8 @@
         "correl": "",
         "expiry": "",
         "broker": "5302116ea6a6002c",
-        "x": 690,
-        "y": 360,
+        "x": 930,
+        "y": 460,
         "wires": []
     },
     {
@@ -219,7 +426,7 @@
         "rh": 0,
         "inputs": 0,
         "x": 280,
-        "y": 480,
+        "y": 540,
         "wires": [
             [
                 "f937eeabd4d14dc9"
@@ -237,8 +444,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 260,
-        "y": 580,
+        "x": 680,
+        "y": 40,
         "wires": [
             [
                 "9c03ab9d0228e102"
@@ -272,8 +479,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 410,
-        "y": 580,
+        "x": 870,
+        "y": 40,
         "wires": [
             [],
             [
@@ -295,266 +502,19 @@
         "freq": "",
         "out": "out",
         "bcm": true,
-        "x": 600,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "3b14aaa5a3ac8340",
-        "type": "rpi-gpio in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "16",
-        "intype": "tri",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 150,
-        "y": 700,
-        "wires": [
-            [
-                "77631061f7faf39a"
-            ]
-        ]
-    },
-    {
-        "id": "d141499f860a4b04",
-        "type": "rpi-gpio in",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "20",
-        "intype": "tri",
-        "debounce": "25",
-        "read": false,
-        "bcm": true,
-        "x": 150,
-        "y": 760,
-        "wires": [
-            [
-                "77631061f7faf39a"
-            ]
-        ]
-    },
-    {
-        "id": "77631061f7faf39a",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 460,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "619f91596913d2a9",
-        "type": "rpi-gpio out",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "6",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 380,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "b57cc2145d6efeb4",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "x": 180,
-        "y": 920,
-        "wires": [
-            [
-                "619f91596913d2a9",
-                "bbb6f04e40cf906c"
-            ]
-        ]
-    },
-    {
-        "id": "bbb6f04e40cf906c",
-        "type": "delay",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 380,
-        "y": 840,
-        "wires": [
-            [
-                "6f34473d8d144b2b"
-            ]
-        ]
-    },
-    {
-        "id": "b31079a0ae431efd",
-        "type": "rpi-gpio out",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "6",
-        "set": false,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 740,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "6f34473d8d144b2b",
-        "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "function 2",
-        "func": "msg.payload = 0\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 840,
-        "wires": [
-            [
-                "b31079a0ae431efd",
-                "0d9accc5cac673f2"
-            ]
-        ]
-    },
-    {
-        "id": "b875b6ef86697e22",
-        "type": "rpi-gpio out",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "13",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 920,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "a09e176d1e7c3c18",
-        "type": "delay",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 920,
-        "y": 1000,
-        "wires": [
-            [
-                "b590c5c4f17cd4a5"
-            ]
-        ]
-    },
-    {
-        "id": "b590c5c4f17cd4a5",
-        "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "function 3",
-        "func": "msg.payload = 0\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
         "x": 1100,
-        "y": 1000,
-        "wires": [
-            [
-                "373326969f4f45b7"
-            ]
-        ]
-    },
-    {
-        "id": "373326969f4f45b7",
-        "type": "rpi-gpio out",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "pin": "13",
-        "set": true,
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 1260,
-        "y": 1000,
+        "y": 40,
         "wires": []
-    },
-    {
-        "id": "0d9accc5cac673f2",
-        "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "function 4",
-        "func": "msg.payload = 1\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 920,
-        "wires": [
-            [
-                "b875b6ef86697e22",
-                "a09e176d1e7c3c18"
-            ]
-        ]
     },
     {
         "id": "214ff6f48b7266d7",
         "type": "function",
         "z": "f6f2187d.f17ca8",
         "name": "InitEnv",
-        "func": "\nreturn msg;",
+        "func": "msg.action = 'subscribe'\nmsg.topic = flow.get('deviceId')\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "initialize": "// 部署节点后，此处添加的代码将运行一次。 \nsysteminformation.baseboard().then(result=>{\n    console.log(result)\n})",
+        "initialize": "// 部署节点后，此处添加的代码将运行一次。 \n\nif (context.get('deviceId') == null) {\n    let info = await systeminformation.baseboard()\n    flow.set('deviceInfo', info)\n    flow.set('deviceId', `lynx-iot-nodered-${info.serial}`)\n}\n",
         "finalize": "",
         "libs": [
             {
@@ -562,10 +522,13 @@
                 "module": "systeminformation"
             }
         ],
-        "x": 950,
-        "y": 360,
+        "x": 270,
+        "y": 100,
         "wires": [
-            []
+            [
+                "f937eeabd4d14dc9",
+                "012382e7134f488e"
+            ]
         ]
     }
 ]
